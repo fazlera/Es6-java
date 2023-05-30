@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async - Await</title>
+</head>
+<body>
+
+    <ul class="mylist">
+
+    </ul>
+    <script>
+            // async function hello(name){
+            //     return 'mr'+' '+ name;
+            // }
+            // const nal= hello('alu khan');
+            // console.log(nal);
+            // nal.then(res => console.log(res))
+
+
+        // function loadData(){
+        //     fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then(res => res.json())
+        //     .then(data =>{
+        //         // displayData(data)
+                
+        //     })
+        // }
+            async function loadData(){
+                const responce =await fetch('https://jsonplaceholder.typicode.com/users')
+                const data = await responce.json();
+                displayData(data)
+                return data;
+            }
+            loadData();    
+
+        // loadData();
+        function displayData(data){
+            const parenetNode = document.getElementById('mylist')
+            for (let I = 0; I < data.length; I++) {
+                const user = data[I];
+                const item = document.createElement('li')
+                item.innerText = user.Name;
+                parenetNode.appendChild(item);
+                
+            }
+            
+        }
+        
+    </script>
+</body>
+</html>
